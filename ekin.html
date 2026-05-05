@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Senin İçin ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: radial-gradient(circle at top, #ff758c, #ff7eb3, #fad0c4);
+    color: white;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Glow başlık */
+h1 {
+    margin-top: 40px;
+    font-size: 45px;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px white; }
+    to { text-shadow: 0 0 25px #ff4d6d, 0 0 40px #ff4d6d; }
+}
+
+/* Yazı animasyonu */
+.message {
+    max-width: 600px;
+    margin: 20px auto;
+    font-size: 18px;
+    opacity: 0;
+    animation: fadeIn 3s ease forwards;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+/* ekin galeri */
+.gallery {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 30px;
+}
+
+.gallery img {
+    width: 230px;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 20px;
+    transition: 0.4s;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+}
+
+.gallery img:hover {
+    transform: scale(1.1) rotate(2deg);
+}
+
+/* Kalp (click) */
+.heart {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background: red;
+    transform: rotate(45deg);
+    animation: floatUp 1s ease-out forwards;
+}
+
+.heart::before,
+.heart::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: red;
+    border-radius: 50%;
+}
+
+.heart::before { top: -10px; }
+.heart::after { left: -10px; }
+
+@keyframes floatUp {
+    to {
+        transform: translateY(-120px) scale(1.5) rotate(45deg);
+        opacity: 0;
+    }
+}
+
+/* Arka plan uçan kalpler */
+.bg-heart {
+    position: fixed;
+    bottom: -20px;
+    color: rgba(255,255,255,0.5);
+    font-size: 20px;
+    animation: rise 6s linear infinite;
+}
+
+@keyframes rise {
+    from { transform: translateY(0); opacity: 1; }
+    to { transform: translateY(-800px); opacity: 0; }
+}
+
+/* Müzik */
+.music {
+    margin: 40px auto;
+    max-width: 400px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Senin İçin ❤️</h1>
+
+<div class="message">
+Seninle geçen her an benim için başka bir dünya...  
+Gülüşün, bakışın, her şeyin içimi ısıtıyor.  
+İyi ki varsın ❤️
+</div>
+
+<div class="gallery">
+    <img src="C:\Users\Sayne\Desktop\ekin\ekin1.jpg">
+    <img src="C:\Users\Sayne\Desktop\ekin\ekin2.jpg">
+    <img src="C:\Users\Sayne\Desktop\ekin\ekin3.jpg">
+</div>
+
+<div class="music">
+<iframe style="border-radius:12px"
+src="https://open.spotify.com/embed/track/6jQHBTdXEUx7LDjrkEiCax"
+width="100%" height="352"
+frameborder="0"
+allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+</iframe>
+</div>
+
+<script>
+// Tıklayınca kalp
+document.addEventListener("click", function(e) {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+
+    heart.style.left = e.clientX + "px";
+    heart.style.top = e.clientY + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 1000);
+});
+
+// Arka plan uçan kalpler
+function createBgHeart() {
+    const heart = document.createElement("div");
+    heart.className = "bg-heart";
+    heart.innerHTML = "❤️";
+
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 6000);
+}
+
+setInterval(createBgHeart, 300);
+</script>
+
+</body>
+</html>

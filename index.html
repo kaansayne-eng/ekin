@@ -2,101 +2,132 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Senin İçin ❤️</title>
 
 <style>
-body {
+* {
+    box-sizing: border-box;
     margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: radial-gradient(circle at top, #ff758c, #ff7eb3, #fad0c4);
-    color: white;
-    text-align: center;
-    overflow: hidden;
+    padding: 0;
 }
 
-/* Glow başlık */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(160deg, #ff758c, #ff7eb3, #fad0c4);
+    color: white;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* MERKEZ KART */
+.container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* BAŞLIK */
 h1 {
-    margin-top: 40px;
-    font-size: 45px;
+    text-align: center;
+    font-size: 28px;
+    margin-top: 25px;
     animation: glow 2s infinite alternate;
 }
 
 @keyframes glow {
     from { text-shadow: 0 0 10px white; }
-    to { text-shadow: 0 0 25px #ff4d6d, 0 0 40px #ff4d6d; }
+    to { text-shadow: 0 0 25px #ff4d6d; }
 }
 
-/* Yazı animasyonu */
-.message {
-    max-width: 600px;
-    margin: 20px auto;
-    font-size: 18px;
-    opacity: 0;
-    animation: fadeIn 3s ease forwards;
+/* KART MESAJ */
+.card {
+    margin-top: 20px;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.6;
 }
 
-@keyframes fadeIn {
-    to { opacity: 1; }
-}
-
-/* ekin galeri */
+/* GALERİ */
 .gallery {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin: 30px;
+    margin-top: 25px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
 }
 
 .gallery img {
-    width: 230px;
-    height: 230px;
+    width: 100%;
+    height: 180px;
     object-fit: cover;
-    border-radius: 20px;
-    transition: 0.4s;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+    border-radius: 18px;
+    transition: 0.3s;
 }
 
 .gallery img:hover {
-    transform: scale(1.1) rotate(2deg);
+    transform: scale(1.05);
 }
 
-/* Kalp (click) */
+/* MÜZİK KART */
+.music {
+    margin-top: 25px;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 15px;
+}
+
+.music iframe {
+    width: 100%;
+    height: 352px;
+    border-radius: 12px;
+}
+
+/* KALPLER */
 .heart {
     position: fixed;
-    width: 20px;
-    height: 20px;
+    width: 14px;
+    height: 14px;
     background: red;
     transform: rotate(45deg);
     animation: floatUp 1s ease-out forwards;
+    pointer-events: none;
 }
 
 .heart::before,
 .heart::after {
     content: "";
     position: absolute;
-    width: 20px;
-    height: 20px;
+    width: 14px;
+    height: 14px;
     background: red;
     border-radius: 50%;
 }
 
-.heart::before { top: -10px; }
-.heart::after { left: -10px; }
+.heart::before { top: -7px; }
+.heart::after { left: -7px; }
 
 @keyframes floatUp {
     to {
-        transform: translateY(-120px) scale(1.5) rotate(45deg);
+        transform: translateY(-120px) scale(1.4) rotate(45deg);
         opacity: 0;
     }
 }
 
-/* Arka plan uçan kalpler */
+/* ARKA PLAN KALP */
 .bg-heart {
     position: fixed;
     bottom: -20px;
     color: rgba(255,255,255,0.5);
-    font-size: 20px;
+    font-size: 18px;
     animation: rise 6s linear infinite;
+    pointer-events: none;
 }
 
 @keyframes rise {
@@ -104,22 +135,34 @@ h1 {
     to { transform: translateY(-800px); opacity: 0; }
 }
 
-/* Müzik */
-.music {
-    margin: 40px auto;
-    max-width: 400px;
+/* MOBİL İYİLEŞTİRME */
+@media (max-width: 500px) {
+    h1 {
+        font-size: 24px;
+    }
+
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery img {
+        height: 220px;
+    }
 }
+
 </style>
 </head>
 
 <body>
 
-<h1>Senin İçin ❤️</h1>
+<div class="container">
 
-<div class="message">
-Seninle geçen her an benim için başka bir dünya...  
-Gülüşün, bakışın, her şeyin içimi ısıtıyor.  
-İyi ki varsın ❤️
+<h1>ANNESİNİN TATLIŞI DA BALLİSİ ❤️</h1>
+
+<div class="card">
+Seninle geçen her an çok eğlenceli.<br>
+<br><br>
+<b>İyi ki varsın ❤️</b>
 </div>
 
 <div class="gallery">
@@ -129,16 +172,19 @@ Gülüşün, bakışın, her şeyin içimi ısıtıyor.
 </div>
 
 <div class="music">
-<iframe style="border-radius:12px"
-src="https://open.spotify.com/embed/track/6jQHBTdXEUx7LDjrkEiCax"
-width="100%" height="352"
-frameborder="0"
-allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
-</iframe>
+    <div class="spotify-card">
+        <iframe 
+            src="https://open.spotify.com/embed/track/6jQHBTdXEUx7LDjrkEiCax"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+        </iframe>
+    </div>
+</div>
+
 </div>
 
 <script>
-// Tıklayınca kalp
+
+// Tıklama kalbi
 document.addEventListener("click", function(e) {
     const heart = document.createElement("div");
     heart.className = "heart";
@@ -151,7 +197,7 @@ document.addEventListener("click", function(e) {
     setTimeout(() => heart.remove(), 1000);
 });
 
-// Arka plan uçan kalpler
+// Arka plan kalpler
 function createBgHeart() {
     const heart = document.createElement("div");
     heart.className = "bg-heart";
@@ -165,7 +211,8 @@ function createBgHeart() {
     setTimeout(() => heart.remove(), 6000);
 }
 
-setInterval(createBgHeart, 300);
+setInterval(createBgHeart, 450);
+
 </script>
 
 </body>
